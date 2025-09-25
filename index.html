@@ -11,38 +11,41 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
+      background-color: #0a1a2f; /* Темно-синий фон */
+      color: #e0e0e0;
       text-align: center;
+      font-size: 15px; /* уменьшенный размер шрифта */
+      line-height: 1.5;
     }
 
     header {
-      background-color: #222;
+      background-color: #0f2744;
       padding: 20px;
+      border-bottom: 2px solid #1e3a5f;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
       margin: 0;
       padding: 0;
     }
 
     nav a {
-      color: #fff;
+      color: #e0e0e0;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: orange;
+      color: #ff9800;
     }
 
     .phone {
-      color: orange;
+      color: #ff9800;
       font-weight: bold;
       margin-top: 10px;
     }
@@ -55,39 +58,41 @@
       max-width: 1000px;
       width: 100%;
       height: auto;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
     .hero h1 {
-      font-size: 36px;
+      font-size: 34px;
       margin: 20px 0 10px;
     }
 
     .hero p {
-      font-size: 18px;
-      color: #ccc;
+      font-size: 16px;
+      color: #b0c4de;
     }
 
     .services {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      background-color: #1a1a1a;
+      background-color: #12263f;
       padding: 40px 20px;
       gap: 20px;
     }
 
     .service {
-      background-color: #222;
+      background-color: #1b3557;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
       width: 300px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .service:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     }
 
     .service img {
@@ -98,19 +103,24 @@
     }
 
     .service button {
-      background-color: orange;
+      background-color: #ff9800;
       border: none;
       padding: 10px 20px;
       color: #000;
       font-weight: bold;
       cursor: pointer;
       margin-top: 10px;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .service button:hover {
+      background-color: #ffc107;
     }
 
     .section-centered {
       padding: 40px 20px;
-      background-color: #1a1a1a;
+      background-color: #142b4a;
     }
 
     .section-centered img {
@@ -119,6 +129,7 @@
       height: auto;
       border-radius: 10px;
       margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
     .section-centered h2 {
@@ -128,30 +139,34 @@
     .section-centered p {
       max-width: 800px;
       margin: 0 auto 20px;
-      color: #ccc;
-      line-height: 1.6;
+      color: #cfd8dc;
     }
 
     .section-centered ul {
       list-style: disc;
       text-align: left;
       display: inline-block;
-      color: #ccc;
+      color: #cfd8dc;
       margin-bottom: 20px;
     }
 
     .section-centered button {
-      background-color: orange;
+      background-color: #ff9800;
       border: none;
       padding: 10px 20px;
       color: #000;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .section-centered button:hover {
+      background-color: #ffc107;
     }
 
     .contact {
-      background-color: #222;
+      background-color: #0f2744;
       padding: 40px 20px;
     }
 
@@ -172,21 +187,26 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .contact button {
-      background-color: orange;
+      background-color: #ff9800;
       border: none;
       padding: 12px;
       color: #000;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .contact button:hover {
+      background-color: #ffc107;
     }
 
     footer {
-      background-color: #111;
+      background-color: #081423;
       padding: 20px;
       font-size: 14px;
       margin-top: 30px;
@@ -197,9 +217,13 @@
     }
 
     footer nav a {
-      color: #fff;
+      color: #e0e0e0;
       text-decoration: none;
       margin: 0 10px;
+    }
+
+    footer nav a:hover {
+      color: #ff9800;
     }
   </style>
 </head>
@@ -213,9 +237,8 @@
         <li><a href="#">Контакты</a></li>
       </ul>
     </nav>
-    <div class="phone">📞 8 800 700 30 30</div>
+  
     <div class="hero">
-      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fru.freepik.com%2Fphotos%2F%25D0%25BB%25D1%258E%25D0%25B4%25D0%25B8-%25D1%2581%25D0%25B0%25D0%25B9%25D1%2582%25D0%25B0&psig=AOvVaw3O4H5I68ZthP7zwAKfdCG-&ust=1758873565892000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCVtvG4848DFQAAAAAdAAAAABAM" alt="Креативное видео">
       <h1>СНИМЕМ ДЛЯ ВАС КРЕАТИВНЫЕ ВИДЕОРОЛИКИ</h1>
       <p>Профессиональная видеосъемка для бизнеса, мероприятий и артистов</p>
     </div>
@@ -243,17 +266,16 @@
   </section>
 
   <section class="section-centered">
-    <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Новости и акции">
-    <h2>Новости и акции</h2>
+    <img src="https://mediaboom.sk/wp-content/uploads/2022/05/rtvs-fotenie-moderatori-sprav.jpg" alt="Новости и акции">
+    <h2>Услуги и акции</h2>
     <ul>
-      <li>Снимем ваш клип на 300p дешевле</li>
+      <li>Снимем ваш клип на 300р дешевле</li>
       <li>Свадебное видео со скидкой 20%</li>
       <li>Акция: корпоративный ролик в подарок</li>
       <li>Бесплатная консультация при заказе съемки</li>
-          <li>Монтаж клипа в подарок при заказе рекламы</li>
-   <li> Индивидуальный сценарий бесплатно при заказе полного пакета услуг</li>
-             <li>Скидка 15% на первый заказ</li>
-      </li>
+      <li>Монтаж клипа в подарок при заказе рекламы</li>
+      <li>Индивидуальный сценарий бесплатно при заказе полного пакета услуг</li>
+      <li>Скидка 15% на первый заказ</li>
     </ul>
   </section>
 
@@ -264,8 +286,7 @@
 Мы используем современное оборудование и новейшие технологии, чтобы каждая работа выглядела стильно и качественно. Наша цель — не просто снять видео, а создать историю, которая вдохновляет и запоминается.</p>
     <button>Подробнее</button>
   </section>
-
-  <section class="contact">
+<section class="contact">
     <h2>Свяжитесь с нами</h2>
     <form>
       <input type="text" placeholder="Ваше имя" required>
@@ -277,16 +298,62 @@
 
   <footer>
     <div class="phone">📞 +7 800 700 30 30</div>
-    <nav>
-      <a href="#">Главная</a> |
-      <a href="#">О нас</a> |
-      <a href="#">Услуги</a> |
-      <a href="#">Контактные номера</a>
-    </nav>
-    <p>© 2025 Видеопродакшн студия. Все права защищены.</p>
+    
   </footer>
+  <script>
+    // --- Анимация 1: появление блока hero ---
+    window.addEventListener("load", () => {
+      const hero = document.querySelector(".hero");
+      hero.style.opacity = "0";
+      hero.style.transform = "translateY(-50px)";
+      setTimeout(() => {
+        hero.style.opacity = "1";
+        hero.style.transform = "translateY(0)";
+      }, 300);
+    });
+  
+    // --- Анимация 2: плавное появление сервисов при скролле ---
+    const services = document.querySelectorAll(".service");
+    window.addEventListener("scroll", () => {
+      services.forEach((service) => {
+        const rect = service.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          service.style.opacity = "1";
+          service.style.transform = "scale(1)";
+        }
+      });
+    });
+    services.forEach(s => {
+      s.style.opacity = "0";
+      s.style.transform = "scale(0.8)";
+      s.style.transition = "all 0.6s ease";
+    });
+  
+    // --- Анимация 3: плавный hover у кнопки ---
+    const button = document.querySelector(".contact button");
+    button.addEventListener("mouseover", () => {
+      button.style.transform = "scale(1.1)";
+      button.style.transition = "transform 0.3s ease";
+    });
+    button.addEventListener("mouseout", () => {
+      button.style.transform = "scale(1)";
+    });
+  
+    // --- Анимация 4: плавный скролл по меню ---
+    const menuLinks = document.querySelectorAll("nav a");
+    menuLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 60,
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
