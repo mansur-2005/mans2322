@@ -1,361 +1,389 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Студия Видеопродакшн</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Видеостудия VISION — профессиональный видеопродакшн: реклама, клипы, корпоративы, свадьбы, анимация.">
+  <title>Видеостудия VISION | Профессиональный видеопродакшн</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg-dark: #121212;
+      --bg-light: #1E1E1E;
+      --card-bg: #181818;
+      --text-light: #EAEAEA;
+      --text-muted: #A0A0A0;
+      --accent-red: #FF004F;
+      --accent-gold: #FFD369;
+      --accent-blue: #00C2FF;
+      --transition: all 0.3s ease;
     }
 
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a1a2f; /* Темно-синий фон */
-      color: #e0e0e0;
-      text-align: center;
-      font-size: 15px; /* уменьшенный размер шрифта */
-      line-height: 1.5;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* ====== HEADER ====== */
     header {
-      background-color: #0f2744;
-      padding: 20px;
-      border-bottom: 2px solid #1e3a5f;
+      position: sticky;
+      top: 0;
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      padding: 1rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-red);
+      font-family: 'Montserrat', sans-serif;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
+      gap: 2rem;
     }
 
     nav a {
-      color: #e0e0e0;
       text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
+      color: var(--text-light);
+      font-weight: 600;
+      position: relative;
     }
 
-    nav a:hover {
-      color: #ff9800;
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent-red);
+      transition: var(--transition);
     }
+    nav a:hover::after {width: 100%;}
+    nav a:hover {color: var(--accent-gold);}
 
-    .phone {
-      color: #ff9800;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
+    /* ====== HERO ====== */
     .hero {
-      padding: 40px 20px;
-    }
-
-    .hero img {
-      max-width: 1000px;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    }
-
-    .hero h1 {
-      font-size: 34px;
-      margin: 20px 0 10px;
-    }
-
-    .hero p {
-      font-size: 16px;
-      color: #b0c4de;
-    }
-
-    .services {
+      height: 90vh;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      background-color: #12263f;
-      padding: 40px 20px;
-      gap: 20px;
-    }
-
-    .service {
-      background-color: #1b3557;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .service:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-    }
-
-    .service img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .service button {
-      background-color: #ff9800;
-      border: none;
-      padding: 10px 20px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .service button:hover {
-      background-color: #ffc107;
-    }
-
-    .section-centered {
-      padding: 40px 20px;
-      background-color: #142b4a;
-    }
-
-    .section-centered img {
-      max-width: 1000px;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    .section-centered h2 {
-      margin-bottom: 10px;
-    }
-
-    .section-centered p {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      color: #cfd8dc;
-    }
-
-    .section-centered ul {
-      list-style: disc;
-      text-align: left;
-      display: inline-block;
-      color: #cfd8dc;
-      margin-bottom: 20px;
-    }
-
-    .section-centered button {
-      background-color: #ff9800;
-      border: none;
-      padding: 10px 20px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    .section-centered button:hover {
-      background-color: #ffc107;
-    }
-
-    .contact {
-      background-color: #0f2744;
-      padding: 40px 20px;
-    }
-
-    .contact h2 {
-      margin-bottom: 20px;
-    }
-
-    .contact form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
+      align-items: center;
       flex-direction: column;
-      gap: 15px;
+      text-align: center;
+      background: url("https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
     }
-
-    .contact input,
-    .contact textarea {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 15px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
     }
-
-    .contact button {
-      background-color: #ff9800;
-      border: none;
-      padding: 12px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.3s;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      animation: fadeInUp 1.5s ease;
     }
-
-    .contact button:hover {
-      background-color: #ffc107;
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red), var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200%;
+      animation: gradientMove 8s infinite linear;
+      margin-bottom: 1rem;
     }
-
-    footer {
-      background-color: #081423;
-      padding: 20px;
-      font-size: 14px;
-      margin-top: 30px;
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
     }
-
-    footer nav {
-      margin-top: 10px;
-    }
-
-    footer nav a {
-      color: #e0e0e0;
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--accent-red);
+      border-radius: 25px;
+      color: white;
       text-decoration: none;
-      margin: 0 10px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn:hover {background: var(--accent-blue); transform: scale(1.05);}
+
+    /* ====== SERVICES ====== */
+    .services {
+      padding: 4rem 8%;
+      background: var(--bg-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-card {
+      flex: 1 1 300px;
+      max-width: 320px;
+      background: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 0.6s ease;
+    }
+    .service-card img {
+      width: 100%;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {margin-bottom: 0.5rem; color: var(--accent-gold);}
+    .service-card p {color: var(--text-muted); margin-bottom: 1rem;}
+    .service-card button {
+      background: var(--accent-red);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .service-card button:hover {background: var(--accent-blue);}
+
+    /* ====== MODAL ====== */
+    .modal {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+    .modal-content h2 {margin-bottom: 1rem;}
+    .modal-content p {color: var(--text-muted);}
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      color: var(--text-light);
+      cursor: pointer;
     }
 
-    footer nav a:hover {
-      color: #ff9800;
+    /* ====== FOOTER ====== */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: var(--bg-dark);
+      border-top: 2px solid var(--bg-light);
+      color: var(--text-muted);
+    }
+
+    /* ====== BUTTON UP ====== */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      background: var(--accent-red);
+      color: white;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .back-to-top.visible {opacity: 1; visibility: visible;}
+    .back-to-top:hover {background: var(--accent-blue);}
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 200% 50%;}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    @media (max-width: 768px) {
+      nav ul {gap: 1rem;}
+      .hero h1 {font-size: 2rem;}
+      .services {flex-direction: column; align-items: center;}
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
+    <div class="logo">🎬 VISION VIDEOPRODUCTION</div>
     <nav>
       <ul>
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">О нас</a></li>
-        <li><a href="#">Услуги</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#contacts">Контакты</a></li>
       </ul>
     </nav>
-  
-    <div class="hero">
-      <h1>СНИМЕМ ДЛЯ ВАС КРЕАТИВНЫЕ ВИДЕОРОЛИКИ</h1>
-      <p>Профессиональная видеосъемка для вашего бизнеса,  различных мероприятий и  </p>
-    </div>
   </header>
 
-  <section class="services">
-    <div class="service">
-      <img src="https://assets.weforum.org/article/image/responsive_big_r_9OTkRupM-sRI_VamnYa6HY7SM4vMlUFuODOvVnMkY.jpg" alt="Реклама">
-      <h2>Реклама</h2>
-      <p>Создание рекламных роликов для ТВ и интернета</p>
-      <button>Подробнее</button>
-    </div>
-    <div class="service">
-      <img src="https://avatars.mds.yandex.net/get-ydo/2428621/2a0000017d7d278bfb7f35288056e990e9bf/diploma" alt="Клипы">
-      <h2>Клипы</h2>
-      <p>Съемка музыкальных видеоклипов для артистов</p>
-      <button>Подробнее</button>
-    </div>
-    <div class="service">
-      <img src="https://images.pexels.com/photos/265947/pexels-photo-265947.jpeg" alt="Свадьбы">
-      <h2>Свадьбы</h2>
-      <p>Профессиональная съемка свадебных мероприятий</p>
-      <button>Подробнее</button>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Мы создаём видеоролики, которые вдохновляют</h1>
+      <p>Полный цикл видеопродакшн: от идеи до готового фильма</p>
+      <a href="#contacts" class="btn">Заказать проект</a>
     </div>
   </section>
 
-  <section class="section-centered">
-    <img src="https://mediaboom.sk/wp-content/uploads/2022/05/rtvs-fotenie-moderatori-sprav.jpg" alt="Новости и акции">
-    <h2>Услуги и акции</h2>
-    <ul>
-      <li>Снимем ваш клип на 300р дешевле</li>
-      <li>Свадебное видео со скидкой 20%</li>
-      <li>Акция: корпоративный ролик в подарок</li>
-      <li>Бесплатная консультация при заказе съемки</li>
-      <li>Монтаж клипа в подарок при заказе рекламы</li>
-      <li>Индивидуальный сценарий бесплатно при заказе полного пакета услуг</li>
-      <li>Скидка 15% на первый заказ</li>
-    </ul>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="service-card">
+     <img src="https://assets.weforum.org/article/image/responsive_big_r_9OTkRupM-sRI_VamnYa6HY7SM4vMlUFuODOvVnMkY.jpg" alt="Рекламные ролики">
+      <h3>Рекламные ролики</h3>
+      <p>Создание продающих и ярких рекламных роликов.</p>
+      <button data-service="Реклама">Подробнее</button>
+    </div>
+
+
+    <div class="service-card">
+       <img src="https://avatars.mds.yandex.net/get-ydo/2428621/2a0000017d7d278bfb7f35288056e990e9bf/diploma" alt="ВидеоКлипы">
+      <h3>ВидеоКлипы</h3>
+      <p>Профессиональная постановка и съемка клипов.</p>
+      <button data-service="Клип">Подробнее</button>
+    </div>
+
+
+    <div class="service-card">
+      <img src="https://images.pexels.com/photos/265947/pexels-photo-265947.jpeg" alt="Свадебное видео">
+      <h3>Свадебное видео</h3>
+      <p>Запечатлеем лучшие моменты вашего дня.</p>
+      <button data-service="Свадьба">Подробнее</button>
+    </div>
   </section>
 
-  <section class="section-centered">
-    <img src="https://global-uploads.webflow.com/63fbf496c1ef8e81a06600fe/646054673cd46f9028fc2437_TV-p-1600.png" alt="Наша команда">
-    <h2>О нас</h2>
-    <p>Мы — команда профессионалов с многолетним опытом работы в видеоиндустрии. Создаем проекты «под ключ» — от идеи и сценария до съемки и монтажа. Работаем по всей стране.
-Мы используем современное оборудование и новейшие технологии, чтобы каждая работа выглядела стильно и качественно. Наша цель — не просто снять видео, а создать историю, которая вдохновляет и запоминается.</p>
-    <button>Подробнее</button>
-  </section>
-<section class="contact">
-    <h2>Свяжитесь с нами</h2>
-    <form>
-      <input type="text" placeholder="Ваше имя" required>
-      <input type="email" placeholder="Email" required>
-      <textarea rows="5" placeholder="Ваше сообщение"></textarea>
-      <button type="submit">Отправить</button>
-    </form>
+  <!-- ABOUT -->
+  <section class="services" id="about">
+    <div class="service-card visible">
+      <h3>О нашей студии</h3>
+      <p>VISION — это команда профессионалов в сфере видеопроизводства. 
+      Мы делаем рекламу, корпоративные фильмы, анимацию и клипы.</p>
+    </div>
   </section>
 
-  <footer>
-    <div class="phone">📞 +7 800 700 30 30</div>
- <nav>
-        <a href="#">Контактные номера</a>
-      </nav>
-      <p>© 2025 Видеопродакшн студия. Все права защищены.</p>
-
+  <!-- FOOTER -->
+  <footer id="contacts">
+    <p>📞 +7 (900) 123-45-67 | ✉ info@visionstudio.kz</p>
+    <p>© 2025 Видеостудия VISION. Все права защищены.</p>
   </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2 id="modalTitle">Услуга</h2>
+      <p id="modalDesc">Описание услуги будет здесь...</p>
+    </div>
+  </div>
+
+  <!-- BUTTON UP -->
+  <a href="#" class="back-to-top">↑</a>
+
+  <!-- JS -->
   <script>
-    // --- Анимация 1: появление блока hero ---
-    window.addEventListener("load", () => {
-      const hero = document.querySelector(".hero");
-      hero.style.opacity = "0";
-      hero.style.transform = "translateY(-50px)";
-      setTimeout(() => {
-        hero.style.opacity = "1";
-        hero.style.transform = "translateY(0)";
-      }, 300);
-    });
-  
-    // --- Анимация 2: плавное появление сервисов при скролле ---
-    const services = document.querySelectorAll(".service");
-    window.addEventListener("scroll", () => {
-      services.forEach((service) => {
-        const rect = service.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50) {
-          service.style.opacity = "1";
-          service.style.transform = "scale(1)";
+    // Анимация появления карточек при скролле
+    const cards = document.querySelectorAll('.service-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
         }
       });
-    });
-    services.forEach(s => {
-      s.style.opacity = "0";
-      s.style.transform = "scale(0.8)";
-      s.style.transition = "all 0.6s ease";
-    });
-  
-   // --- Открытие модального окна ---
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalText = document.getElementById('modal-text');
-    const closeBtn = document.querySelector('.close');
+    }, {threshold: 0.2});
+    cards.forEach(card => observer.observe(card));
 
-    document.querySelectorAll('.service button').forEach(btn => {
+    // Модальное окно для услуг
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalClose = document.querySelector('.modal-close');
+
+    const serviceDescriptions = {
+      "Рекламные ролики": "Мы создаём мощные рекламные ролики, которые повышают продажи и узнаваемость вашего бренда.",
+      "ВидеоКлипы": "Креативная постановка, стильная и профессиональная съемка и монтаж клипов для артистов, блогеров,бизнесменов и тому прочее.",
+      "Свадебное видео": "Сохраним лучшие эмоции и воспоминания вашего дня в красивом фильме."
+    };
+
+    document.querySelectorAll('[data-service]').forEach(btn => {
       btn.addEventListener('click', () => {
+        const service = btn.getAttribute('data-service');
+        modalTitle.textContent = service;
+        modalDesc.textContent = serviceDescriptions[service] || "Описание скоро будет добавлено.";
         modal.style.display = 'flex';
-        modalTitle.textContent = btn.dataset.service;
-        modalText.textContent = "Подробная информация об услуге: " + btn.dataset.service;
       });
     });
 
-    closeBtn.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) modal.style.display = 'none';
+    modalClose.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', e => { if(e.target === modal) modal.style.display = 'none'; });
+
+    // Кнопка вверх
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if(window.pageYOffset > 300){
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
     });
-
-
   </script>
 </body>
 </html>
+
+
 
 
 
