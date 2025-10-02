@@ -240,7 +240,7 @@
   
     <div class="hero">
       <h1>СНИМЕМ ДЛЯ ВАС КРЕАТИВНЫЕ ВИДЕОРОЛИКИ</h1>
-      <p>Профессиональная видеосъемка для бизнеса, мероприятий и артистов</p>
+      <p>Профессиональная видеосъемка для вашего бизнеса,  различных мероприятий и  </p>
     </div>
   </header>
 
@@ -343,22 +343,34 @@
       button.style.transform = "scale(1)";
     });
   
-    // --- Анимация 4: плавный скролл по меню ---
-    const menuLinks = document.querySelectorAll("nav a");
-    menuLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 60,
-            behavior: "smooth"
-          });
-        }
-      });
+    
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navList = document.querySelector('.site-header__nav-list');
+
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+  });
+
+  // Закрытие меню при клике на ссылку
+  document.querySelectorAll('.site-header__nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('active');
     });
+  });
+
+  // Кнопка "наверх"
+  const backToTop = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+
   </script>
 </body>
 </html>
+
 
