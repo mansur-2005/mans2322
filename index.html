@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,9 +7,6 @@
   <title>Видеостудия VISION | Профессиональный видеопродакшн</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -35,7 +31,32 @@
       overflow-x: hidden;
     }
 
-    /* ====== HEADER ====== */
+  
+     /* ===== ПРИВЕТСТВЕННАЯ СТРАНИЦА ===== */
+    .welcome-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+      animation: fadeOut 1.5s ease 3s forwards;
+    }
+    .welcome-screen h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      to {opacity: 1;}
+    }
+    @keyframes fadeOut {
+      to {opacity: 0; visibility: hidden;}
+    }
+   
+    /* ===== HEADER ===== */
     header {
       position: sticky;
       top: 0;
@@ -47,27 +68,27 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--accent-red);
       font-family: 'Montserrat', sans-serif;
+      transition: var(--transition);
     }
+    .logo:hover {color: var(--accent-gold); transform: scale(1.05);}
 
     nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
     }
-
     nav a {
       text-decoration: none;
       color: var(--text-light);
       font-weight: 600;
       position: relative;
+      transition: var(--transition);
     }
-
     nav a::after {
       content: "";
       position: absolute;
@@ -81,6 +102,33 @@
     nav a:hover::after {width: 100%;}
     nav a:hover {color: var(--accent-gold);}
 
+    /* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--card-bg);
+      border-radius: 0.5rem;
+      top: 2rem;
+      left: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .dropdown-content a:hover {
+      background: var(--accent-red);
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
     /* ====== HERO ====== */
     .hero {
       height: 90vh;
@@ -89,7 +137,7 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
-      background: url("https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      background: url(https://media.istockphoto.com/id/1081458882/photo/young-photographers-working-with-professional-equipment-in-photo-studio.jpg?s=2048x2048&w=is&k=20&c=gbYC4I_guGYBG6dQga3-BN4F92EphgGFyxv8EnULo-s=) center/cover no-repeat;
       position: relative;
       overflow: hidden;
     }
@@ -235,6 +283,38 @@
     .back-to-top.visible {opacity: 1; visibility: visible;}
     .back-to-top:hover {background: var(--accent-blue);}
 
+     /* ===== REVIEWS ===== */
+    .reviews {
+      background: var(--bg-light);
+      padding: 4rem 8%;
+      text-align: center;
+    }
+    .reviews h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--accent-gold);
+    }
+    .review-card {
+      background: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: var(--transition);
+    }
+    .review-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,194,255,0.4);
+    }
+    .review-author {
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-top: 0.5rem;
+    }
+
+    
+
     /* ====== ANIMATIONS ====== */
     @keyframes fadeInUp {
       from {opacity: 0; transform: translateY(40px);}
@@ -254,9 +334,14 @@
       .hero h1 {font-size: 2rem;}
       .services {flex-direction: column; align-items: center;}
     }
+    
   </style>
 </head>
 <body>
+<!-- ПРИВЕТСТВЕННАЯ СТРАНИЦА -->
+  <div class="welcome-screen">
+    <h1>Добро пожаловать в VISION VIDEOPRODUCTION 🎬</h1>
+  </div>
 
   <!-- HEADER -->
   <header>
@@ -266,6 +351,7 @@
         <li><a href="#hero">Главная</a></li>
         <li><a href="#services">Услуги</a></li>
         <li><a href="#about">О нас</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
     </nav>
@@ -310,15 +396,52 @@
   <section class="services" id="about">
     <div class="service-card visible">
       <h3>О нашей студии</h3>
-      <p>VISION — это команда профессионалов в сфере видеопроизводства. 
-      Мы делаем рекламу, корпоративные фильмы, анимацию и клипы.</p>
+      <p>VISION — это команда профессионалов в сфере видеопроизводства. Мы делаем рекламу, корпоративные фильмы, анимацию и клипы. Мы объединяем креатив, технологичность и внимание к деталям, чтобы каждый проект выглядел уникально и вызывал эмоции. Наша миссия — превращать идеи клиентов в визуальные истории, которые вдохновляют и запоминаются. От разработки концепции до финального монтажа — мы обеспечиваем полный цикл видеопроизводства, создавая контент, который работает на ваш бренд.</p>
     </div>
   </section>
 
+<!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+
+  <!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <h2>Отзывы клиентов</h2>
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/80?img=12" alt="Анна" class="review-avatar">
+    <p>“Работа с VISION — одно удовольствие! Отличное качество и творческий подход.”</p>
+    <div class="review-author">Анна Смирнова</div>
+    <div class="review-position">Маркетолог</div>
+  </div>
+
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/80?img=33" alt="Павел" class="review-avatar">
+    <p>“Видео превзошло все ожидания. Ребята — мастера своего дела. Обязательно обращусь снова!”</p>
+    <div class="review-author">Павел Орлов</div>
+    <div class="review-position">Продюсер</div>
+  </div>
+
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/80?img=55" alt="Михаил" class="review-avatar">
+    <p>“VISION помогли нам создать промо-ролик, который идеально передаёт атмосферу бренда. Спасибо за профессионализм!”</p>
+    <div class="review-author">Михаил Ковалев</div>
+    <div class="review-position">Директор по PR</div>
+  </div>
+
+
+  <div class="review-card">
+    <img src="https://i.pravatar.cc/80?img=49" alt="Елена" class="review-avatar">
+    <p>“Видео получилось настолько эмоциональным и красивым, что его пересматривают все наши клиенты!”</p>
+    <div class="review-author">Елена Громова</div>
+    <div class="review-position">Проджект-менеджер</div>
+  </div>
+</section>
+
+  </section>
   <!-- FOOTER -->
   <footer id="contacts">
     <p>📞 +7 (900) 123-45-67 | ✉ info@visionstudio.kz</p>
     <p>© 2025 Видеостудия VISION. Все права защищены.</p>
+
   </footer>
 
   <!-- MODAL -->
@@ -333,7 +456,7 @@
   <!-- BUTTON UP -->
   <a href="#" class="back-to-top">↑</a>
 
-  <!-- JS -->
+  <!-- JavaScript -->
   <script>
     // Анимация появления карточек при скролле
     const cards = document.querySelectorAll('.service-card');
@@ -361,6 +484,7 @@
     document.querySelectorAll('[data-service]').forEach(btn => {
       btn.addEventListener('click', () => {
         const service = btn.getAttribute('data-service');
+        
         modalTitle.textContent = service;
         modalDesc.textContent = serviceDescriptions[service] || "Описание скоро будет добавлено.";
         modal.style.display = 'flex';
@@ -380,8 +504,18 @@
       }
     });
   </script>
+
+<script>
+    // Приветственная страница исчезает через 4 секунды
+    window.addEventListener("load", () => {
+      setTimeout(() => document.querySelector(".welcome-screen").style.display = "none", 4000);
+    });
+  </script>
+
+
 </body>
 </html>
+
 
 
 
