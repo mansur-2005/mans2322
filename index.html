@@ -1,523 +1,212 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Видеостудия VISION — профессиональный видеопродакшн: реклама, клипы, корпоративы, свадьбы, анимация.">
-  <title>Видеостудия VISION | Профессиональный видеопродакшн</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MotionLab Studio — Профессиональная Видеостудия</title>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-dark: #121212;
-      --bg-light: #1E1E1E;
-      --card-bg: #181818;
-      --text-light: #EAEAEA;
-      --text-muted: #A0A0A0;
-      --accent-red: #FF004F;
-      --accent-gold: #FFD369;
-      --accent-blue: #00C2FF;
-      --transition: all 0.3s ease;
-    }
+    body { font-family: 'Montserrat', sans-serif; margin:0; background:#0e0f12; color:#e8e8e8; line-height:1.6; }
+    a{ color:#4ea8de; text-decoration:none } a:hover{ text-decoration:underline }
+    button{ cursor:pointer; }
 
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    html {scroll-behavior: smooth;}
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-      overflow-x: hidden;
+    /* welcome */
+    .welcome{
+      background:linear-gradient(135deg,#0d0f17 0%,#1a1c2b 100%);
+      color:#fff;
+      padding:90px 20px 130px;
+      text-align:center;
+      overflow:hidden;
     }
+    .welcome__title{ font-size:3rem; margin:0 0 18px; font-weight:700; letter-spacing:1px; }
+    .welcome__text{ font-size:1.2rem; max-width:720px; margin:0 auto 32px; color:#c7c7c7; }
+    .welcome__button{
+      background:#4ea8de; color:#fff; border:none; padding:14px 40px; border-radius:40px; font-weight:700;
+      box-shadow:0 6px 18px rgba(78,168,222,0.6);
+      transition: all 0.3s ease;
+    }
+    .welcome__button:hover{ background:#3a8ec2; transform: translateY(-3px); }
 
-  
-     /* ===== ПРИВЕТСТВЕННАЯ СТРАНИЦА ===== */
-    .welcome-screen {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-      animation: fadeOut 1.5s ease 3s forwards;
+    /* catalog — услуги */
+    .catalog{
+      background:#1b1c22; max-width:1140px; margin:-60px auto 50px; padding:48px; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,0.3);
     }
-    .welcome-screen h1 {
-      color: #fff;
-      font-size: 2.5rem;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
-    @keyframes fadeIn {
-      to {opacity: 1;}
-    }
-    @keyframes fadeOut {
-      to {opacity: 0; visibility: hidden;}
-    }
-   
-    /* ===== HEADER ===== */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(18, 18, 18, 0.95);
-      backdrop-filter: blur(6px);
-      z-index: 1000;
-      padding: 1rem 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent-red);
-      font-family: 'Montserrat', sans-serif;
-      transition: var(--transition);
-    }
-    .logo:hover {color: var(--accent-gold); transform: scale(1.05);}
+    .catalog__title{ font-size:2rem; color:#4ea8de; text-align:center; margin-bottom:30px; font-weight:700; }
+    .catalog__grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:24px; }
+    .catalog__item{ background:#262831; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.25); transition:transform .2s; }
+    .catalog__item:hover{ transform:translateY(-6px) }
+    .catalog__img{ width:100%; height:200px; object-fit:cover; display:block; }
+    .catalog__info{ padding:18px; text-align:left; }
+    .catalog__name{ font-weight:700; color:#fff; margin-bottom:8px; font-size:1.1rem; }
+    .catalog__desc{ font-size:0.95rem; color:#c7c7c7; margin-bottom:10px; }
+    .catalog__price{ font-weight:700; color:#4ea8de; }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
+    /* video showcase */
+    .video{
+      max-width:900px; margin:40px auto; padding:24px; text-align:center;
     }
-    nav a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-weight: 600;
-      position: relative;
-      transition: var(--transition);
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: var(--accent-red);
-      transition: var(--transition);
-    }
-    nav a:hover::after {width: 100%;}
-    nav a:hover {color: var(--accent-gold);}
+    .video__title{ font-size:1.8rem; color:#4ea8de; font-weight:700; margin-bottom:18px; }
+    .video__box{ border-radius:14px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.3); background:#000; }
 
-    /* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: var(--card-bg);
-      border-radius: 0.5rem;
-      top: 2rem;
-      left: 0;
-      padding: 0.5rem 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: var(--text-light);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .dropdown-content a:hover {
-      background: var(--accent-red);
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    /* ====== HERO ====== */
-    .hero {
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      background: url(https://media.istockphoto.com/id/1081458882/photo/young-photographers-working-with-professional-equipment-in-photo-studio.jpg?s=2048x2048&w=is&k=20&c=gbYC4I_guGYBG6dQga3-BN4F92EphgGFyxv8EnULo-s=) center/cover no-repeat;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      animation: fadeInUp 1.5s ease;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red), var(--accent-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200%;
-      animation: gradientMove 8s infinite linear;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: var(--accent-red);
-      border-radius: 25px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    .btn:hover {background: var(--accent-blue); transform: scale(1.05);}
+    /* why us */
+    .why{ max-width:1140px; margin:50px auto; padding:40px; text-align:center; }
+    .why__title{ font-size:1.8rem; color:#4ea8de; font-weight:700; margin-bottom:25px; }
+    .why__list{ display:flex; gap:20px; justify-content:space-between; flex-wrap:wrap; }
+    .why__item{ background:#262831; border-radius:12px; padding:20px; flex:1 1 260px; box-shadow:0 8px 30px rgba(0,0,0,0.25); font-weight:600; color:#e0e0e0; }
 
-    /* ====== SERVICES ====== */
-    .services {
-      padding: 4rem 8%;
-      background: var(--bg-light);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .service-card {
-      flex: 1 1 300px;
-      max-width: 320px;
-      background: var(--card-bg);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: var(--transition);
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    .service-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: 0.6s ease;
-    }
-    .service-card img {
-      width: 100%;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .service-card h3 {margin-bottom: 0.5rem; color: var(--accent-gold);}
-    .service-card p {color: var(--text-muted); margin-bottom: 1rem;}
-    .service-card button {
-      background: var(--accent-red);
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .service-card button:hover {background: var(--accent-blue);}
+    /* reviews */
+    .reviews{ max-width:1140px; margin:40px auto; padding:36px; border-radius:12px; background:#1b1c22; box-shadow:0 12px 45px rgba(0,0,0,0.3); }
+    .reviews__list{ display:flex; gap:16px; flex-wrap:wrap; }
+    .reviews__item{ background:#262831; padding:20px; border-radius:10px; flex:1 1 300px; font-style:italic; color:#d1d1d1; }
 
-    /* ====== MODAL ====== */
-    .modal {
-      display: none;
-      position: fixed;
-      top:0; left:0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .modal-content {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 500px;
-      text-align: center;
-      animation: fadeIn 0.5s ease;
-    }
-    .modal-content h2 {margin-bottom: 1rem;}
-    .modal-content p {color: var(--text-muted);}
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      color: var(--text-light);
-      cursor: pointer;
-    }
+    /* form */
+    .form{ max-width:640px; margin:40px auto 80px; padding:40px; border-radius:16px; background:#1b1c22; box-shadow:0 16px 55px rgba(0,0,0,0.4); }
+    .form__group{ margin-bottom:18px; text-align:left; }
+    .form__label{ display:block; margin-bottom:8px; font-weight:700; color:#4ea8de; }
+    .form__input,.form__textarea{ width:100%; padding:12px 14px; border-radius:12px; border:2px solid #4ea8de; font-size:1rem; background:#262831; color:#fff; }
+    .form__input:focus,.form__textarea:focus{ outline:none; border-color:#63c2ff; }
+    .form__button{ width:100%; padding:14px; border-radius:999px; background:#4ea8de; color:#fff; border:none; font-weight:700; font-size:1.05rem; box-shadow:0 10px 25px rgba(78,168,222,0.6); transition:all .3s; }
+    .form__button:hover{ background:#3a8ec2; transform:translateY(-3px); }
 
-    /* ====== FOOTER ====== */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      background: var(--bg-dark);
-      border-top: 2px solid var(--bg-light);
-      color: var(--text-muted);
-    }
+    /* map */
+    .map{ max-width:900px; margin:40px auto 80px; text-align:center; }
+    .map iframe{ width:100%; height:420px; border:0; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.3); }
 
-    /* ====== BUTTON UP ====== */
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      background: var(--accent-red);
-      color: white;
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      font-size: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-    .back-to-top.visible {opacity: 1; visibility: visible;}
-    .back-to-top:hover {background: var(--accent-blue);}
+    footer{ text-align:center; padding:18px 8px; color:#aaa; font-size:0.9rem; }
 
-     /* ===== REVIEWS ===== */
-    .reviews {
-      background: var(--bg-light);
-      padding: 4rem 8%;
-      text-align: center;
+    @media(max-width:600px){
+      .welcome__title{ font-size:2.2rem }
+      .catalog__img{ height:160px }
+      .video__box video{ height:220px }
+      .map iframe{ height:300px }
     }
-    .reviews h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: var(--accent-gold);
-    }
-    .review-card {
-      background: var(--card-bg);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      margin: 1rem auto;
-      max-width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: var(--transition);
-    }
-    .review-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 25px rgba(0,194,255,0.4);
-    }
-    .review-author {
-      font-weight: 700;
-      color: var(--accent-blue);
-      margin-top: 0.5rem;
-    }
-
-    
-
-    /* ====== ANIMATIONS ====== */
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      100% {background-position: 200% 50%;}
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.9);}
-      to {opacity: 1; transform: scale(1);}
-    }
-
-    @media (max-width: 768px) {
-      nav ul {gap: 1rem;}
-      .hero h1 {font-size: 2rem;}
-      .services {flex-direction: column; align-items: center;}
-    }
-    
   </style>
 </head>
 <body>
-<!-- ПРИВЕТСТВЕННАЯ СТРАНИЦА -->
-  <div class="welcome-screen">
-    <h1>Добро пожаловать в VISION VIDEOPRODUCTION 🎬</h1>
-  </div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">🎬 VISION VIDEOPRODUCTION</div>
-    <nav>
-      <ul>
-        <li><a href="#hero">Главная</a></li>
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#reviews">Отзывы</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- welcome -->
+  <section class="welcome" id="welcome">
+    <h1 class="welcome__title">MotionLab Studio — мы создаём видео, которые вдохновляют</h1>
+    <p class="welcome__text">Мы — команда профессионалов в видеопродакшне. Снимаем рекламные ролики, клипы и брендовые видео, которые привлекают внимание и усиливают имидж вашего бизнеса.</p>
+    <button class="welcome__button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать съёмку</button>
+  </section>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h1>Мы создаём видеоролики, которые вдохновляют</h1>
-      <p>Полный цикл видеопродакшн: от идеи до готового фильма</p>
-      <a href="#contacts" class="btn">Заказать проект</a>
+  <!-- catalog -->
+  <section class="catalog" id="catalog">
+    <h2 class="catalog__title">Наши услуги</h2>
+    <div class="catalog__grid">
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?auto=format&fit=crop&w=1200&q=80" alt="Рекламные ролики">
+        <div class="catalog__info">
+          <div class="catalog__name">Рекламные ролики</div>
+          <div class="catalog__desc">Создаём коммерческие видео, которые продают и запоминаются.</div>
+          <div class="catalog__price">от ₸150 000</div>
+        </div>
+      </div>
+
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1200&q=80" alt="Музыкальные клипы">
+        <div class="catalog__info">
+          <div class="catalog__name">Музыкальные клипы</div>
+          <div class="catalog__desc">Креативная команда операторов и режиссёров воплотит ваш трек в кадре.</div>
+          <div class="catalog__price">от ₸200 000</div>
+        </div>
+      </div>
+
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1541560052-77ec1bbc09f7?auto=format&fit=crop&w=1200&q=80" alt="Съемка мероприятий">
+        <div class="catalog__info">
+          <div class="catalog__name">Съёмка мероприятий</div>
+          <div class="catalog__desc">Сохраним лучшие моменты ваших событий в профессиональном видео.</div>
+          <div class="catalog__price">от ₸100 000</div>
+        </div>
+      </div>
+
+      <div class="catalog__item">
+        <img class="catalog__img" src="https://images.unsplash.com/photo-1581093588401-22f8b6b015b1?auto=format&fit=crop&w=1200&q=80" alt="Монтаж и постпродакшн">
+        <div class="catalog__info">
+          <div class="catalog__name">Монтаж и постпродакшн</div>
+          <div class="catalog__desc">Профессиональный монтаж, цветокор и графика для идеального результата.</div>
+          <div class="catalog__price">от ₸80 000</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="service-card">
-     <img src="https://assets.weforum.org/article/image/responsive_big_r_9OTkRupM-sRI_VamnYa6HY7SM4vMlUFuODOvVnMkY.jpg" alt="Рекламные ролики">
-      <h3>Рекламные ролики</h3>
-      <p>Создание продающих и ярких рекламных роликов.</p>
-      <button data-service="Реклама">Подробнее</button>
-    </div>
+  <!-- video -->
+  <section class="video" id="video">
+    <h3 class="video__title">Примеры наших работ</h3>
+    <div class="video-container">
+   <iframe 
+      width="800" 
+      height="450"
+      src="https://www.youtube.com/embed/r9cH6q2rhe8"
+      title="Видео от нашей студии"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+     </div>
+    
+  </section>
 
-
-    <div class="service-card">
-       <img src="https://avatars.mds.yandex.net/get-ydo/2428621/2a0000017d7d278bfb7f35288056e990e9bf/diploma" alt="ВидеоКлипы">
-      <h3>ВидеоКлипы</h3>
-      <p>Профессиональная постановка и съемка клипов.</p>
-      <button data-service="Клип">Подробнее</button>
-    </div>
-
-
-    <div class="service-card">
-      <img src="https://images.pexels.com/photos/265947/pexels-photo-265947.jpeg" alt="Свадебное видео">
-      <h3>Свадебное видео</h3>
-      <p>Запечатлеем лучшие моменты вашего дня.</p>
-      <button data-service="Свадьба">Подробнее</button>
+  <!-- why us -->
+  <section class="why" id="why">
+    <h2 class="why__title">Почему выбирают нас</h2>
+    <div class="why__list">
+      <div class="why__item">🎬 Более 10 лет опыта в видеопродакшне</div>
+      <div class="why__item">💡 Работаем с ведущими брендами и частными клиентами</div>
+      <div class="why__item">🎯 Гарантируем качество, прозрачность и результат</div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="services" id="about">
-    <div class="service-card visible">
-      <h3>О нашей студии</h3>
-      <p>VISION — это команда профессионалов в сфере видеопроизводства. Мы делаем рекламу, корпоративные фильмы, анимацию и клипы. Мы объединяем креатив, технологичность и внимание к деталям, чтобы каждый проект выглядел уникально и вызывал эмоции. Наша миссия — превращать идеи клиентов в визуальные истории, которые вдохновляют и запоминаются. От разработки концепции до финального монтажа — мы обеспечиваем полный цикл видеопроизводства, создавая контент, который работает на ваш бренд.</p>
-    </div>
-  </section>
-
-<!-- REVIEWS -->
+  <!-- reviews -->
   <section class="reviews" id="reviews">
-
-  <!-- REVIEWS -->
-<section class="reviews" id="reviews">
-  <h2>Отзывы клиентов</h2>
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/80?img=12" alt="Анна" class="review-avatar">
-    <p>“Работа с VISION — одно удовольствие! Отличное качество и творческий подход.”</p>
-    <div class="review-author">Анна Смирнова</div>
-    <div class="review-position">Маркетолог</div>
-  </div>
-
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/80?img=33" alt="Павел" class="review-avatar">
-    <p>“Видео превзошло все ожидания. Ребята — мастера своего дела. Обязательно обращусь снова!”</p>
-    <div class="review-author">Павел Орлов</div>
-    <div class="review-position">Продюсер</div>
-  </div>
-
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/80?img=55" alt="Михаил" class="review-avatar">
-    <p>“VISION помогли нам создать промо-ролик, который идеально передаёт атмосферу бренда. Спасибо за профессионализм!”</p>
-    <div class="review-author">Михаил Ковалев</div>
-    <div class="review-position">Директор по PR</div>
-  </div>
-
-
-  <div class="review-card">
-    <img src="https://i.pravatar.cc/80?img=49" alt="Елена" class="review-avatar">
-    <p>“Видео получилось настолько эмоциональным и красивым, что его пересматривают все наши клиенты!”</p>
-    <div class="review-author">Елена Громова</div>
-    <div class="review-position">Проджект-менеджер</div>
-  </div>
-</section>
-
-  </section>
-  <!-- FOOTER -->
-  <footer id="contacts">
-    <p>📞 +7 (900) 123-45-67 | ✉ info@visionstudio.kz</p>
-    <p>© 2025 Видеостудия VISION. Все права защищены.</p>
-
-  </footer>
-
-  <!-- MODAL -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <h2 id="modalTitle">Услуга</h2>
-      <p id="modalDesc">Описание услуги будет здесь...</p>
+    <div class="reviews__list">
+      <div class="reviews__item">С MotionLab мы сняли корпоративное видео — получилось невероятно профессионально! <div style="margin-top:10px; font-weight:700; color:#4ea8de; text-align:right;">— Айгерим Т.</div></div>
+      <div class="reviews__item">Отличная команда! Всё чётко, быстро и с крутым результатом. <div style="margin-top:10px; font-weight:700; color:#4ea8de; text-align:right;">— Тимур К.</div></div>
+      <div class="reviews__item">Сняли рекламный ролик для моего бренда одежды — конверсия выросла на 40%! <div style="margin-top:10px; font-weight:700; color:#4ea8de; text-align:right;">— Алина М.</div></div>
     </div>
-  </div>
+  </section>
 
-  <!-- BUTTON UP -->
-  <a href="#" class="back-to-top">↑</a>
+  <!-- form -->
+  <section class="form" id="contact">
+    <h2 style="text-align:center; color:#4ea8de; margin-top:0; margin-bottom:18px;">Оставить заявку</h2>
+    <form action="#" method="POST" novalidate>
+      <div class="form__group">
+        <label class="form__label" for="name">Имя</label>
+        <input class="form__input" id="name" name="name" type="text" placeholder="Введите ваше имя" required>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="phone">Телефон</label>
+        <input class="form__input" id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="comment">Сообщение</label>
+        <textarea class="form__textarea" id="comment" name="comment" placeholder="Опишите ваш проект"></textarea>
+      </div>
+      <button type="submit" class="form__button">Отправить</button>
+    </form>
+  </section>
 
-  <!-- JavaScript -->
-  <script>
-    // Анимация появления карточек при скролле
-    const cards = document.querySelectorAll('.service-card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {threshold: 0.2});
-    cards.forEach(card => observer.observe(card));
+  <!-- map -->
+  <section class="map" id="map">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19988.67838006542!2d71.4147996!3d51.1282293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585b6d4c11a15%3A0x5b4f064dca6a9f72!2z0JDQstGC0L7RgdC60LjQuSDQmtC-0LvQsNGC0LXQvdC40LU!5e0!3m2!1sru!2skz!4v1698073771000!5m2!1sru!2skz"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
 
-    // Модальное окно для услуг
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalClose = document.querySelector('.modal-close');
-
-    const serviceDescriptions = {
-      "Рекламные ролики": "Мы создаём мощные рекламные ролики, которые повышают продажи и узнаваемость вашего бренда.",
-      "ВидеоКлипы": "Креативная постановка, стильная и профессиональная съемка и монтаж клипов для артистов, блогеров,бизнесменов и тому прочее.",
-      "Свадебное видео": "Сохраним лучшие эмоции и воспоминания вашего дня в красивом фильме."
-    };
-
-    document.querySelectorAll('[data-service]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const service = btn.getAttribute('data-service');
-        
-        modalTitle.textContent = service;
-        modalDesc.textContent = serviceDescriptions[service] || "Описание скоро будет добавлено.";
-        modal.style.display = 'flex';
-      });
-    });
-
-    modalClose.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', e => { if(e.target === modal) modal.style.display = 'none'; });
-
-    // Кнопка вверх
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      if(window.pageYOffset > 300){
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-  </script>
-
-<script>
-    // Приветственная страница исчезает через 4 секунды
-    window.addEventListener("load", () => {
-      setTimeout(() => document.querySelector(".welcome-screen").style.display = "none", 4000);
-    });
-  </script>
-
+  <footer>
+    <p>© 2025 MotionLab Studio — Профессиональная видеостудия. Все права защищены.</p>
+  </footer>
 
 </body>
 </html>
-
-
-
-
-
-
+     
