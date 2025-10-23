@@ -1,5 +1,6 @@
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -13,15 +14,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    body { font-family: 'Montserrat', sans-serif; margin:0; background:#0e0f12; color:#e8e8e8; line-height:1.6; }
+    body { font-family: 'Montserrat', sans-serif; margin:0; background:#0e0f12; color:#e8e8e8; line-height:1.6; scroll-behavior:smooth; }
     a{ color:#4ea8de; text-decoration:none } a:hover{ text-decoration:underline }
     button{ cursor:pointer; }
+
+    /* header */
+    header{
+      position:fixed; top:0; left:0; width:100%; z-index:1000;
+      background:rgba(14,15,18,0.9); backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(78,168,222,0.2);
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 40px; box-sizing:border-box;
+    }
+    .logo{ font-weight:700; font-size:1.2rem; color:#4ea8de; }
+    nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:20px; }
+    nav a{ color:#e8e8e8; font-weight:600; transition:color .3s; }
+    nav a:hover{ color:#4ea8de; }
+
+    /* smooth appear animation */
+    .hidden-section{
+      opacity:0; transform:translateY(40px);
+      transition:opacity 0.8s ease, transform 0.8s ease;
+    }
+    .visible-section{
+      opacity:1; transform:translateY(0);
+    }
 
     /* welcome */
     .welcome{
       background:linear-gradient(135deg,#0d0f17 0%,#1a1c2b 100%);
       color:#fff;
-      padding:90px 20px 130px;
+      padding:130px 20px 130px;
       text-align:center;
       overflow:hidden;
     }
@@ -53,7 +76,6 @@
       max-width:900px; margin:40px auto; padding:24px; text-align:center;
     }
     .video__title{ font-size:1.8rem; color:#4ea8de; font-weight:700; margin-bottom:18px; }
-    .video__box{ border-radius:14px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.3); background:#000; }
 
     /* why us */
     .why{ max-width:1140px; margin:50px auto; padding:40px; text-align:center; }
@@ -82,22 +104,37 @@
     footer{ text-align:center; padding:18px 8px; color:#aaa; font-size:0.9rem; }
 
     @media(max-width:600px){
+      header{ padding:10px 20px; flex-direction:column; }
+      nav ul{ flex-wrap:wrap; justify-content:center; gap:12px; }
       .welcome__title{ font-size:2.2rem }
       .catalog__img{ height:160px }
-      .video__box video{ height:220px }
       .map iframe{ height:300px }
     }
   </style>
 </head>
 <body>
 
+  <!-- header -->
+  <header>
+    <div class="logo">🎥 MotionLab Studio</div>
+    <nav>
+      <ul>
+        <li><a href="#welcome">Главная</a></li>
+        <li><a href="#catalog">Услуги</a></li>
+        <li><a href="#video">Работы</a></li>
+        <li><a href="#why">Почему мы</a></li>
+        <li><a href="#map">Местоположение</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- welcome -->
-  <section class="welcome" id="welcome">
+  <section class="welcome hidden-section" id="welcome">
     <h1 class="welcome__title">MotionLab Studio — мы создаём видео, которые вдохновляют</h1>
     <p class="welcome__text">Мы — команда профессионалов в видеопродакшне. Снимаем рекламные ролики, клипы и брендовые видео, которые привлекают внимание и усиливают имидж вашего бизнеса.</p>
     <button class="welcome__button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Заказать съёмку</button>
   </section>
-
+ 
   <!-- catalog -->
   <section class="catalog" id="catalog">
     <h2 class="catalog__title">Наши услуги</h2>
@@ -203,10 +240,33 @@
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 
-  <footer>
-    <p>© 2025 MotionLab Studio — Профессиональная видеостудия. Все права защищены.</p>
-  </footer>
+  <footer>© 2025 MotionLab Studio — Профессиональная видеостудия. Все права защищены.</footer>
 
+
+
+  <!-- JS -->
+  <script>
+    // плавное появление секций при скролле
+    const sections = document.querySelectorAll('.hidden-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible-section');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(sec => observer.observe(sec));
+
+    // плавная анимация при клике на меню
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
-     
+
