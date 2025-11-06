@@ -1,243 +1,278 @@
-
- /* ====== Общие стили ====== */
+/* ====== ОБЩИЕ СТИЛИ ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #0a1a2f; /* Темно-синий фон */
-  color: #e0e6ed; /* Светлый текст */
-  line-height: 1.6;
-}
-
-/* ====== Контейнер ====== */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 0;
-}
-
-/* ====== Заголовок (Header) ====== */
-header {
-  background: linear-gradient(135deg, #0f2a45, #081a30);
+  background-color: #0b132b;
   color: #fff;
-  text-align: center;
-  padding: 3rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-header h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #ffb400; /* Золотистый акцент */
-  letter-spacing: 1px;
-}
-
-header p {
-  color: #b0c4de;
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-}
-
-/* ====== Навигация ====== */
-nav {
-  background: #081a30;
-  text-align: center;
-  padding: 1rem 0;
-  position: sticky;
+/* ====== ХЕДЕР ====== */
+header {
+  position: fixed;
   top: 0;
-  z-index: 100;
+  width: 100%;
+  background: rgba(10, 18, 40, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
-nav a {
-  color: #e0e6ed;
-  margin: 0 1rem;
+header .logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #4fc3f7;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+header .logo:hover {
+  color: #ffb703;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #ffb400;
+nav ul li a:hover {
+  color: #4fc3f7;
 }
 
-/* ====== Герой-секция (Hero) ====== */
+/* ====== ГЛАВНЫЙ БЛОК ====== */
 .hero {
-  background: url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
-  height: 80vh;
+  background: url('https://images.unsplash.com/photo-1599058917212-d750089bc07c?auto=format&fit=crop&w=1600&q=80') 
+              no-repeat center center/cover;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   text-align: center;
+  padding: 0 20px;
   color: #fff;
-  position: relative;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(10, 26, 47, 0.7);
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  z-index: 2;
-  color: #ffb400;
+.hero h1 {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 .hero p {
+  margin-top: 15px;
   font-size: 1.2rem;
-  margin-top: 1rem;
-  z-index: 2;
-  color: #cdd9e5;
+  max-width: 600px;
+  animation: fadeInUp 1.4s ease-in-out;
 }
 
 .hero button {
-  margin-top: 2rem;
-  padding: 0.8rem 1.8rem;
-  background: #ffb400;
+  margin-top: 25px;
+  background: #4fc3f7;
   border: none;
-  border-radius: 30px;
-  color: #081a30;
-  font-weight: 600;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  color: #0b132b;
   cursor: pointer;
+  font-weight: 600;
   transition: all 0.3s ease;
-  z-index: 2;
 }
 
 .hero button:hover {
-  background: #fff;
-  color: #0a1a2f;
+  background: #ffb703;
+  transform: translateY(-3px);
 }
 
-/* ====== О нас ====== */
-.about {
-  background-color: #102a44;
-  padding: 4rem 2rem;
+/* ====== СЕКЦИИ ====== */
+section {
+  padding: 100px 60px;
   text-align: center;
 }
 
-.about h2 {
-  color: #ffb400;
-  margin-bottom: 1rem;
+section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #4fc3f7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.about p {
+section p {
   max-width: 800px;
-  margin: auto;
-  color: #cdd9e5;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #e0e0e0;
 }
 
-/* ====== Услуги ====== */
-.services {
-  background-color: #0a1a2f;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.services h2 {
-  color: #ffb400;
-  margin-bottom: 2rem;
-}
-
-.service-cards {
+/* ====== СЕКЦИЯ ПОЧЕМУ НАС ВЫБИРАЮТ ====== */
+.features {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.service {
-  background: #102a44;
-  padding: 2rem;
-  border-radius: 10px;
+.feature {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  width: 300px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
+}
+
+.feature img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.feature h3 {
+  color: #ffb703;
+  margin-bottom: 10px;
+}
+
+/* ====== ОТЗЫВЫ ====== */
+.reviews {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.review {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
   width: 280px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s;
 }
 
-.service:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+.review:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.service h3 {
-  color: #ffb400;
-  margin-bottom: 1rem;
+.review p {
+  font-style: italic;
+  color: #d1d1d1;
 }
 
-/* ====== Контакт ====== */
-.contact {
-  background-color: #102a44;
-  padding: 4rem 2rem;
-  text-align: center;
+.review h4 {
+  margin-top: 10px;
+  color: #4fc3f7;
 }
 
-.contact h2 {
-  color: #ffb400;
-  margin-bottom: 1rem;
+/* ====== КОНТАКТЫ ====== */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
 }
 
-.contact p {
-  color: #cdd9e5;
-  margin-bottom: 2rem;
+.contact-info a {
+  color: #4fc3f7;
+  text-decoration: none;
 }
 
-.contact button {
-  padding: 0.8rem 1.8rem;
-  background: #ffb400;
-  border: none;
-  border-radius: 30px;
-  color: #081a30;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.contact-info a:hover {
+  color: #ffb703;
 }
 
-.contact button:hover {
-  background: #fff;
-  color: #0a1a2f;
+/* ====== МЕСТОПОЛОЖЕНИЕ ====== */
+.map {
+  margin-top: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-/* ====== Подвал (Footer) ====== */
+/* ====== ФУТЕР ====== */
 footer {
-  background: #081a30;
-  color: #b0c4de;
+  background: #020d1f;
+  padding: 25px 0;
   text-align: center;
-  padding: 2rem;
+  color: #aaa;
   font-size: 0.9rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 footer a {
-  color: #ffb400;
+  color: #4fc3f7;
   text-decoration: none;
-  margin: 0 0.5rem;
+  transition: 0.3s;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: #ffb703;
 }
 
-/* ====== Адаптив ====== */
+/* ====== АНИМАЦИИ ====== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== АДАПТИВНОСТЬ ====== */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
+  header {
+    padding: 15px 25px;
   }
 
-  .hero h2 {
-    font-size: 1.8rem;
+  nav ul {
+    flex-direction: column;
+    background: rgba(10, 18, 40, 0.95);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    display: none;
   }
 
-  .service-cards {
+  nav ul.active {
+    display: flex;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  section {
+    padding: 70px 25px;
+  }
+
+  .features, .reviews {
     flex-direction: column;
     align-items: center;
   }
